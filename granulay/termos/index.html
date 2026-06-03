@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Termos de Uso — Granulay</title>
+        <meta name="description" content="Termos de serviço do Granulay. Entenda as regras e condições de uso do nosso software." />
+        <meta name="robots" content="noindex" />
+        <meta name="theme-color" content="#f7f3eb" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+        <link rel="icon" href="../../assets/granulay/logo.png" />
+        <link rel="stylesheet" href="../../styles.css" />
+        <link rel="stylesheet" href="../styles.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" />
+    </head>
+    <body>
+        <div class="granulay-page">
+            <div class="granulay-legal">
+                <a class="granulay-back" href="../index.html" data-i18n-legal="back">&larr; Voltar</a>
+                <h1 data-i18n-legal="terms.title">Termos de Uso</h1>
+                <p class="granulay-legal-date">Última atualização: 15/12/2025</p>
+
+                <section>
+                    <h2 data-i18n-legal="terms.section1.title">1. Aceitação dos Termos</h2>
+                    <p data-i18n-legal="terms.section1.text">Ao usar o Granulay, você concorda com estes termos de serviço.</p>
+                </section>
+
+                <section>
+                    <h2 data-i18n-legal="terms.section2.title">2. Licença de Uso</h2>
+                    <p data-i18n-legal="terms.section2.text">O Granulay é licenciado, não vendido. Você recebe uma licença limitada, não exclusiva e não transferível para usar o software.</p>
+                </section>
+
+                <section>
+                    <h2 data-i18n-legal="terms.section3.title">3. Restrições</h2>
+                    <p data-i18n-legal="terms.section3.text">Você não pode modificar, distribuir, vender ou fazer engenharia reversa do software.</p>
+                </section>
+
+                <section>
+                    <h2 data-i18n-legal="terms.section4.title">4. Garantia</h2>
+                    <p data-i18n-legal="terms.section4.text">O software é fornecido "no estado em que se encontra", sem garantias de qualquer tipo.</p>
+                </section>
+
+                <section>
+                    <h2 data-i18n-legal="terms.section5.title">5. Contato</h2>
+                    <p data-i18n-legal="terms.section5.text">Para perguntas sobre estes termos, entre em contato pelo e-mail <a href="mailto:gabrielalvesdepaiva@icloud.com">gabrielalvesdepaiva@icloud.com</a>.</p>
+                </section>
+            </div>
+        </div>
+        <script src="../../scripts/granulay-i18n.js"></script>
+        <script>
+            (function() {
+                var browserLang = navigator.language || (navigator.languages && navigator.languages[0]);
+                var isPt = browserLang && browserLang.toLowerCase().startsWith("pt");
+                var texts = isPt ? {
+                    back: "\u2190 Voltar",
+                    "terms.title": "Termos de Uso",
+                    "terms.section1.title": "1. Aceita\u00e7\u00e3o dos Termos",
+                    "terms.section1.text": "Ao usar o Granulay, voc\u00ea concorda com estes termos de servi\u00e7o.",
+                    "terms.section2.title": "2. Licen\u00e7a de Uso",
+                    "terms.section2.text": "O Granulay \u00e9 licenciado, n\u00e3o vendido. Voc\u00ea recebe uma licen\u00e7a limitada, n\u00e3o exclusiva e n\u00e3o transfer\u00edvel para usar o software.",
+                    "terms.section3.title": "3. Restri\u00e7\u00f5es",
+                    "terms.section3.text": "Voc\u00ea n\u00e3o pode modificar, distribuir, vender ou fazer engenharia reversa do software.",
+                    "terms.section4.title": "4. Garantia",
+                    "terms.section4.text": "O software \u00e9 fornecido \"no estado em que se encontra\", sem garantias de qualquer tipo.",
+                    "terms.section5.title": "5. Contato",
+                    "terms.section5.text": "Para perguntas sobre estes termos, entre em contato pelo e-mail "
+                } : {
+                    back: "\u2190 Back",
+                    "terms.title": "Terms of Service",
+                    "terms.section1.title": "1. Acceptance of Terms",
+                    "terms.section1.text": "By using Granulay, you agree to these terms of service.",
+                    "terms.section2.title": "2. License to Use",
+                    "terms.section2.text": "Granulay is licensed, not sold. You receive a limited, non-exclusive, and non-transferable license to use the software.",
+                    "terms.section3.title": "3. Restrictions",
+                    "terms.section3.text": "You may not modify, distribute, sell, or reverse engineer the software.",
+                    "terms.section4.title": "4. Warranty",
+                    "terms.section4.text": "The software is provided \"as is\", without warranties of any kind.",
+                    "terms.section5.title": "5. Contact",
+                    "terms.section5.text": "For questions about these terms, please contact us at "
+                };
+
+                document.documentElement.lang = isPt ? "pt-BR" : "en";
+
+                document.querySelectorAll("[data-i18n-legal]").forEach(function(el) {
+                    var key = el.getAttribute("data-i18n-legal");
+                    var value = texts[key];
+                    if (value) {
+                        if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+                            el.value = value;
+                        } else {
+                            el.innerHTML = value;
+                        }
+                    }
+                });
+            })();
+        </script>
+    </body>
+</html>

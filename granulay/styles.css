@@ -363,6 +363,71 @@ body:has(.granulay-page) {
     }
 }
 
+.granulay-legal {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 32px;
+}
+
+.granulay-legal h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2rem, 1.5rem + 1.2vw, 2.8rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--gl-text);
+    margin-bottom: 8px;
+}
+
+.granulay-legal h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--gl-text);
+    margin-bottom: 8px;
+}
+
+.granulay-legal p {
+    color: var(--gl-muted);
+    line-height: 1.7;
+    margin-bottom: 1.5em;
+}
+
+.granulay-legal section {
+    margin-bottom: 2em;
+}
+
+.granulay-legal section:last-child {
+    margin-bottom: 0;
+}
+
+.granulay-legal a {
+    color: var(--gl-text);
+}
+
+.granulay-legal-date {
+    color: var(--gl-muted);
+    font-size: 0.9rem;
+    margin-bottom: 2em;
+}
+
+.granulay-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 40px;
+    color: var(--gl-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 160ms ease;
+}
+
+.granulay-back:hover,
+.granulay-back:focus-visible {
+    color: var(--gl-text);
+}
+
 @media (max-width: 560px) {
     .granulay-hero {
         padding: 36px 20px;
@@ -378,5 +443,8 @@ body:has(.granulay-page) {
     }
     .granulay-footer-links {
         gap: 20px;
+    }
+    .granulay-legal {
+        padding: 60px 20px;
     }
 }
