@@ -200,10 +200,15 @@
             </div>
 
             <nav class="granulay-scroll-indicator" aria-label="Navegação por seções">
+                <button type="button" class="granulay-nav-btn granulay-nav-prev" aria-label="Seção anterior">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>
+                </button>
                 <button class="granulay-dot is-active" data-section="0" aria-label="Seção 1"></button>
                 <button class="granulay-dot" data-section="1" aria-label="Seção 2"></button>
                 <button class="granulay-dot" data-section="2" aria-label="Seção 3"></button>
-                <svg class="granulay-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+                <button type="button" class="granulay-nav-btn granulay-nav-next" aria-label="Próxima seção">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+                </button>
             </nav>
         </div>
 
@@ -212,11 +217,21 @@
             (function() {
                 var container = document.getElementById("scroll-container");
                 var dots = document.querySelectorAll(".granulay-dot");
-                var chevron = document.querySelector(".granulay-chevron");
+                var prevBtn = document.querySelector(".granulay-nav-prev");
+                var nextBtn = document.querySelector(".granulay-nav-next");
                 var sections = document.querySelectorAll(".granulay-section");
                 var lastCurrent = -1;
 
                 document.getElementById("granulay-year").textContent = new Date().getFullYear();
+
+                function goToSection(index) {
+                    var total = sections.length;
+                    var target = ((index % total) + total) % total;
+                    container.scrollTo({
+                        left: target * container.clientWidth,
+                        behavior: "smooth"
+                    });
+                }
 
                 function updateIndicator() {
                     var scrollLeft = container.scrollLeft;
@@ -228,10 +243,6 @@
                     dots.forEach(function(dot, i) {
                         dot.classList.toggle("is-active", i === current);
                     });
-
-                    if (chevron) {
-                        chevron.style.display = current >= sections.length - 1 ? "none" : "";
-                    }
                 }
 
                 var rafPending = false;
@@ -248,12 +259,18 @@
 
                 dots.forEach(function(dot) {
                     dot.addEventListener("click", function() {
-                        var index = parseInt(dot.dataset.section, 10);
-                        container.scrollTo({
-                            left: index * container.clientWidth,
-                            behavior: "smooth"
-                        });
+                        goToSection(parseInt(dot.dataset.section, 10));
                     });
+                });
+
+                prevBtn.addEventListener("click", function() {
+                    var current = Math.round(container.scrollLeft / container.clientWidth);
+                    goToSection(current - 1);
+                });
+
+                nextBtn.addEventListener("click", function() {
+                    var current = Math.round(container.scrollLeft / container.clientWidth);
+                    goToSection(current + 1);
                 });
 
                 updateIndicator();

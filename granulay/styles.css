@@ -311,18 +311,24 @@ body:has(.granulay-page) {
 
 .granulay-scroll-indicator {
     position: fixed;
-    bottom: 16px;
+    bottom: max(16px, env(safe-area-inset-bottom));
     left: 50%;
-    z-index: 10;
+    z-index: 100;
     display: flex;
     align-items: center;
     gap: 12px;
     transform: translateX(-50%);
+    padding: 6px 16px;
+    background: var(--gl-background);
+    background: color-mix(in srgb, var(--gl-background) 92%, transparent);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    border-radius: 999px;
 }
 
 .granulay-dot {
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
     border-radius: 999px;
     background: var(--gl-muted);
     opacity: 0.4;
@@ -336,30 +342,49 @@ body:has(.granulay-page) {
 }
 
 .granulay-dot.is-active {
-    width: 24px;
+    width: 22px;
     background: var(--gl-text);
     opacity: 1;
 }
 
-.granulay-chevron {
-    margin-left: 8px;
-    width: 16px;
-    height: 16px;
+.granulay-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    background: transparent;
     color: var(--gl-muted);
-    animation: granulay-pulse 2s ease-in-out infinite;
+    cursor: pointer;
+    font: inherit;
+    border-radius: 999px;
+    transition:
+        color 200ms ease,
+        background 200ms ease,
+        transform 160ms ease;
 }
 
-@keyframes granulay-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
+.granulay-nav-btn:hover,
+.granulay-nav-btn:focus-visible {
+    color: var(--gl-text);
+    background: var(--gl-background);
+    transform: scale(1.08);
+}
+
+.granulay-nav-btn svg {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 auto;
 }
 
 @media (prefers-reduced-motion: reduce) {
     .granulay-scroll-container {
         scroll-snap-type: none;
     }
-    .granulay-chevron {
-        animation: none;
+    .granulay-nav-btn {
+        transition: none;
     }
 }
 
