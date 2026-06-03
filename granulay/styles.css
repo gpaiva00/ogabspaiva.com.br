@@ -1,0 +1,382 @@
+.granulay-page {
+    --gl-background: #f7f3eb;
+    --gl-text: #000;
+    --gl-muted: #737373;
+    --gl-accent-bg: #e5e5e5;
+    --gl-border: #000;
+    --gl-grain-opacity: 0.3;
+    --gl-shadow: 5px 5px 0 0 #000;
+    color-scheme: light dark;
+    font-family: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--gl-background);
+    color: var(--gl-text);
+}
+
+@media (prefers-color-scheme: dark) {
+    .granulay-page {
+        --gl-background: #000;
+        --gl-text: #fff;
+        --gl-muted: #a3a3a3;
+        --gl-accent-bg: #262626;
+        --gl-border: #fff;
+        --gl-shadow: 5px 5px 0 0 #fff;
+    }
+}
+
+body:has(.granulay-page) {
+    background: var(--gl-background);
+    background-image: none;
+    line-height: 1.6;
+}
+
+.granulay-page::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: var(--gl-grain-opacity);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-size: 256px;
+}
+
+.granulay-scroll-container {
+    display: flex;
+    height: 100vh;
+    height: 100dvh;
+    width: 100vw;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.granulay-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.granulay-section {
+    flex: 0 0 100vw;
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: auto;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+.granulay-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    padding: 48px 32px;
+    position: relative;
+}
+
+.granulay-hero-title {
+    margin-bottom: 8px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.35rem, 2rem + 2.5vw, 3.8rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--gl-text);
+}
+
+.granulay-hero-subtitle {
+    margin-bottom: 32px;
+    font-size: clamp(1rem, 0.95rem + 0.5vw, 1.25rem);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    color: var(--gl-muted);
+}
+
+.granulay-logo-wrap {
+    position: relative;
+    margin-bottom: 32px;
+}
+
+.granulay-logo {
+    display: block;
+    height: auto;
+    max-height: 45vh;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    clip-path: url(#squircleClip);
+}
+
+.granulay-hero-desc {
+    max-width: 560px;
+    margin-bottom: 40px;
+    font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1.125rem);
+    line-height: 1.7;
+    text-align: center;
+    color: var(--gl-muted);
+}
+
+.granulay-cta {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px;
+    padding: 14px 28px;
+    border: 2px solid var(--gl-border);
+    box-shadow: var(--gl-shadow);
+    background: var(--gl-text);
+    color: var(--gl-background);
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    transition:
+        transform 160ms ease,
+        box-shadow 160ms ease;
+}
+
+.granulay-cta:hover,
+.granulay-cta:focus-visible {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 0 var(--gl-border);
+}
+
+.granulay-cta:active {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 0 var(--gl-border);
+}
+
+.granulay-cta svg {
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+}
+
+.granulay-features {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    background: var(--gl-background);
+    padding: 80px 32px;
+}
+
+.granulay-features-title {
+    margin-bottom: 8px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.75rem, 1.5rem + 1.2vw, 2.5rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--gl-text);
+}
+
+.granulay-features-subtitle {
+    margin-bottom: 48px;
+    color: var(--gl-muted);
+    text-align: center;
+}
+
+.granulay-features-grid {
+    display: grid;
+    gap: 48px;
+    max-width: 900px;
+    width: 100%;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+    .granulay-features-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 900px) {
+    .granulay-features-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.granulay-feature-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.granulay-feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+    background: var(--gl-accent-bg);
+    color: var(--gl-text);
+}
+
+.granulay-feature-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 1.5;
+}
+
+.granulay-feature-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gl-text);
+}
+
+.granulay-coming-soon {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border: 1px solid var(--gl-border);
+    background: var(--gl-background);
+    font-size: 0.7rem;
+    color: var(--gl-muted);
+    letter-spacing: 0.02em;
+}
+
+.granulay-feature-desc {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--gl-muted);
+}
+
+.granulay-footer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    padding: 80px 32px;
+}
+
+.granulay-footer-section h2 {
+    margin-bottom: 32px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.75rem, 1.5rem + 1.2vw, 2.5rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    text-align: center;
+}
+
+.granulay-footer-email {
+    margin-bottom: 48px;
+    color: var(--gl-muted);
+    text-decoration: none;
+    transition: color 160ms ease;
+}
+
+.granulay-footer-email:hover,
+.granulay-footer-email:focus-visible {
+    color: var(--gl-text);
+}
+
+.granulay-footer-links {
+    display: flex;
+    gap: 32px;
+    font-size: 0.875rem;
+}
+
+.granulay-footer-links a {
+    color: var(--gl-muted);
+    text-decoration: none;
+    transition: color 160ms ease;
+}
+
+.granulay-footer-links a:hover,
+.granulay-footer-links a:focus-visible {
+    color: var(--gl-text);
+}
+
+.granulay-footer-copy {
+    margin-top: 64px;
+    font-size: 0.75rem;
+    color: var(--gl-muted);
+    opacity: 0.6;
+}
+
+.granulay-scroll-indicator {
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transform: translateX(-50%);
+}
+
+.granulay-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--gl-muted);
+    opacity: 0.4;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition:
+        width 300ms ease,
+        background 300ms ease,
+        opacity 300ms ease;
+}
+
+.granulay-dot.is-active {
+    width: 24px;
+    background: var(--gl-text);
+    opacity: 1;
+}
+
+.granulay-chevron {
+    margin-left: 8px;
+    width: 16px;
+    height: 16px;
+    color: var(--gl-muted);
+    animation: granulay-pulse 2s ease-in-out infinite;
+}
+
+@keyframes granulay-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .granulay-scroll-container {
+        scroll-snap-type: none;
+    }
+    .granulay-chevron {
+        animation: none;
+    }
+}
+
+@media (max-width: 560px) {
+    .granulay-hero {
+        padding: 36px 20px;
+    }
+    .granulay-features {
+        padding: 60px 20px;
+    }
+    .granulay-footer-section {
+        padding: 60px 20px;
+    }
+    .granulay-features-grid {
+        gap: 32px;
+    }
+    .granulay-footer-links {
+        gap: 20px;
+    }
+}
