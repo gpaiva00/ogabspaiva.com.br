@@ -1,0 +1,17 @@
+{
+    "name": "ogabspaiva-com-br",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "packageManager": "bun@1.2.15",
+    "scripts": {
+        "dev": "bun scripts/dev-server.js",
+        "vercel:dev": "vercel dev"
+    },
+    "dependencies": {
+        "@vercel/blob": "^2.3.3"
+    },
+    "devDependencies": {
+        "vercel": "^54.1.0"
+    }
+}
