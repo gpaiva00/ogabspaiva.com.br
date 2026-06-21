@@ -146,10 +146,13 @@ h1 {
 }
 
 .projects {
+    display: grid;
+    grid-template-rows: auto 1fr;
     padding: 24px 0 38px;
 }
 
 .content-tabs {
+    grid-row: 1;
     display: flex;
     align-items: center;
     gap: 18px;
@@ -199,16 +202,23 @@ h1 {
     transform: scaleX(1);
 }
 
-.project-list {
-    display: grid;
-    gap: 2px;
+.tab-panel {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
-.tab-panel:not(.is-active) {
-    display: none;
+.project-list {
+    grid-row: 2;
+    display: grid;
+    gap: 2px;
+    align-content: start;
 }
 
 .tab-panel.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
     animation: panel-in 220ms ease both;
 }
 

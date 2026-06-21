@@ -72,7 +72,19 @@
                         tabindex="0"
                         data-tab="projects"
                     >
-                        Projetos
+                        Produtos
+                    </button>
+                    <button
+                        class="content-tab"
+                        id="miniapps-title"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="miniapps-panel"
+                        tabindex="-1"
+                        data-tab="miniapps"
+                    >
+                        Mini Apps
                     </button>
                     <button
                         class="content-tab"
@@ -94,6 +106,7 @@
                     role="tabpanel"
                     aria-labelledby="projects-title"
                     data-panel="projects"
+                    aria-hidden="false"
                 >
                     <a
                         class="project project--gira"
@@ -179,11 +192,21 @@
 
                 <div
                     class="project-list tab-panel"
+                    id="miniapps-panel"
+                    role="tabpanel"
+                    aria-labelledby="miniapps-title"
+                    data-panel="miniapps"
+                    aria-hidden="true"
+                >
+                </div>
+
+                <div
+                    class="project-list tab-panel"
                     id="articles-panel"
                     role="tabpanel"
                     aria-labelledby="articles-title"
                     data-panel="articles"
-                    hidden
+                    aria-hidden="true"
                 >
                     <a
                         class="project article"
@@ -258,7 +281,7 @@
                 panels.forEach((panel) => {
                     const isSelected = panel.dataset.panel === tab.dataset.tab;
                     panel.classList.toggle("is-active", isSelected);
-                    panel.hidden = !isSelected;
+                    panel.setAttribute("aria-hidden", String(!isSelected));
                 });
 
                 if (focusTab) {
