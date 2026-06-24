@@ -51,27 +51,6 @@
     line-height: 1.2;
 }
 
-.panel-index {
-    color: var(--quiet);
-    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
-    font-size: 0.68rem;
-}
-
-.privacy-note {
-    display: inline-flex;
-    gap: 6px;
-    align-items: center;
-    color: var(--muted);
-    font-size: 0.72rem;
-    font-weight: 650;
-}
-
-.privacy-note svg {
-    width: 15px;
-    height: 15px;
-    color: var(--accent);
-}
-
 .panel-body {
     padding: 22px 15px 20px;
 }

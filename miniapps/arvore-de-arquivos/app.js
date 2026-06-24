@@ -18,11 +18,14 @@ const pathsInput = document.querySelector("#paths-input");
 const treeOutput = document.querySelector("#tree-output");
 const actionStatus = document.querySelector("#action-status");
 const copyButton = document.querySelector("#copy-button");
+const copyIcon = document.querySelector("#copy-icon");
 const downloadButton = document.querySelector("#download-button");
 const exampleButton = document.querySelector("#example-button");
 const clearButton = document.querySelector("#clear-button");
 
 let statusTimer;
+let copyIconTimer;
+const copyIconMarkup = copyIcon.innerHTML;
 
 const render = () => {
     const tree = buildTree(pathsInput.value.split(/\r?\n/), rootName.value);
@@ -46,10 +49,20 @@ const selectOutput = () => {
     treeOutput.focus();
 };
 
+const showCopySuccess = () => {
+    window.clearTimeout(copyIconTimer);
+    copyIcon.innerHTML = '<path d="m5 12 4 4L19 6" />';
+    copyButton.setAttribute("aria-label", "Copiado");
+    copyIconTimer = window.setTimeout(() => {
+        copyIcon.innerHTML = copyIconMarkup;
+        copyButton.removeAttribute("aria-label");
+    }, 1500);
+};
+
 const copyOutput = async () => {
     try {
         await navigator.clipboard.writeText(treeOutput.textContent);
-        showStatus("Árvore copiada.");
+        showCopySuccess();
     } catch {
         selectOutput();
         showStatus("Texto selecionado para copiar.");
