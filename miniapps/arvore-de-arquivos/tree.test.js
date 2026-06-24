@@ -1,5 +1,7 @@
 import { describe, expect, test } from "bun:test";
-import { buildTree, createDownloadName, renderTree } from "./tree.js";
+import "./tree.js";
+
+const { buildTree, createDownloadName, renderTree } = globalThis.FileTree;
 
 const render = (paths, sortMode = "folders-first", rootName = "meu-projeto") =>
     renderTree(buildTree(paths, rootName), sortMode);

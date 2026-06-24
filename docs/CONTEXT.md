@@ -82,7 +82,7 @@ Definidas em `styles.css` (raiz do projeto):
 - **Projetos na homepage:** `<a class="project">` com imagem + nome + descrição. Cor de glow via modifier class (`--gira`, `--granulay`, `--minpoker`, `--tiberius`).
 - **Tabs:** `role="tablist"` com vanilla JS, `data-tab`/`data-panel`, suporte a teclado (ArrowLeft/Right, Home/End).
 - **Artigos:** Classes `.essay-header`, `.essay-body`, `.essay-image`, `.essay-cover`.
-- **Mini Apps:** Shell editorial compartilhado em `miniapps/miniapps.css`; cada ferramenta mantém HTML, CSS, JS e testes próprios na pasta do seu slug.
+- **Mini Apps:** Shell editorial compartilhado em `miniapps/miniapps.css`; cada ferramenta mantém HTML, CSS, JS e testes próprios na pasta do seu slug. Scripts de runtime são clássicos, ordenados e relativos para funcionar diretamente via `file://` e em hospedagem estática, sem módulos ou build step.
 - **Like button:** FAB no canto inferior direito, `data-like-button`, `data-like-count`, `data-like-status`. Conectado à API via `article-likes.js`.
 - **Granulay:** Scroll horizontal com scroll-snap, dots de navegação, botões prev/next, SVG noise filter.
 

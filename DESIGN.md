@@ -42,6 +42,8 @@ Mini apps extend this into an **editorial utility** pattern. A tool may be dense
 ## Mini-app pattern
 
 - Write mobile-first CSS: narrow-screen behavior is the default and larger layouts use `min-width` enhancements.
+- Support direct `file://` use with ordered classic scripts and relative asset paths.
+- Do not use ES modules, bundlers, build steps, or separate development and production implementations.
 - Every mini app lives at `/miniapps/<slug>/` and links back to `/miniapps/`.
 - Lead with the task outcome, not a feature list.
 - Keep the main action visible without instructions. Put optional explanation below the workbench.

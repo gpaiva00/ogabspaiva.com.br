@@ -1,4 +1,8 @@
-import { buildTree, createDownloadName, renderTree } from "./tree.js";
+if (!globalThis.FileTree) {
+    throw new Error("FileTree failed to initialize before app.js.");
+}
+
+const { buildTree, createDownloadName, renderTree } = globalThis.FileTree;
 
 const sample = `src/components/Button.js
 src/components/Header.js
