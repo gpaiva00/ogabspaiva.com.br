@@ -100,9 +100,9 @@ a {
 }
 
 .miniapps-shell {
-    width: min(100% - 40px, 1120px);
+    width: min(100% - 32px, 1120px);
     margin: 0 auto;
-    padding: 30px 0 64px;
+    padding: 22px 0 64px;
 }
 
 .site-nav {
@@ -110,7 +110,7 @@ a {
     justify-content: space-between;
     gap: 20px;
     align-items: center;
-    margin-bottom: clamp(54px, 9vw, 104px);
+    margin-bottom: 54px;
     color: var(--muted);
     font-size: 0.88rem;
 }
@@ -145,7 +145,7 @@ a {
     max-width: 11ch;
     margin: 0 0 20px;
     font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(2.8rem, 2rem + 4vw, 5.8rem);
+    font-size: clamp(2.75rem, 14vw, 4.1rem);
     font-weight: 400;
     letter-spacing: -0.025em;
     line-height: 0.96;
@@ -174,8 +174,8 @@ a {
 .tool-link {
     position: relative;
     display: grid;
-    grid-template-columns: 52px minmax(0, 1fr) auto;
-    gap: 18px;
+    grid-template-columns: 46px minmax(0, 1fr) auto;
+    gap: 13px;
     align-items: center;
     padding: 20px 0;
     border-bottom: 1px solid var(--line);
@@ -184,11 +184,11 @@ a {
 
 .tool-icon {
     display: grid;
-    width: 52px;
-    height: 52px;
+    width: 46px;
+    height: 46px;
     place-items: center;
     border: 1px solid color-mix(in srgb, var(--accent) 20%, var(--line));
-    border-radius: 16px;
+    border-radius: 14px;
     color: var(--accent-strong);
     background: var(--accent-soft);
     transition:
@@ -214,7 +214,7 @@ a {
 
 .tool-copy span {
     color: var(--muted);
-    font-size: 0.94rem;
+    font-size: 0.88rem;
     line-height: 1.45;
 }
 
@@ -276,33 +276,33 @@ a {
     outline-offset: 4px;
 }
 
-@media (max-width: 620px) {
+@media (min-width: 621px) {
     .miniapps-shell {
-        width: min(100% - 32px, 1120px);
-        padding-top: 22px;
+        width: min(100% - 40px, 1120px);
+        padding-top: 30px;
     }
 
     .site-nav {
-        margin-bottom: 54px;
+        margin-bottom: clamp(54px, 9vw, 104px);
     }
 
     .page-title {
-        font-size: clamp(2.75rem, 14vw, 4.1rem);
+        font-size: clamp(2.8rem, 2rem + 4vw, 5.8rem);
     }
 
     .tool-link {
-        grid-template-columns: 46px minmax(0, 1fr) auto;
-        gap: 13px;
+        grid-template-columns: 52px minmax(0, 1fr) auto;
+        gap: 18px;
     }
 
     .tool-icon {
-        width: 46px;
-        height: 46px;
-        border-radius: 14px;
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
     }
 
     .tool-copy span {
-        font-size: 0.88rem;
+        font-size: 0.94rem;
     }
 }
 
