@@ -37,6 +37,13 @@ Site pessoal de Gabriel Paiva que funciona como:
 - [x] Compartilhamento (Web Share API + fallback)
 - [x] Imagem de capa e imagens inline no corpo
 
+### Mini Apps (`/miniapps/`)
+- [x] Hub com a lista completa de ferramentas
+- [x] Rotas estáveis e compartilháveis para cada ferramenta
+- [x] Árvore de Arquivos com prévia ao vivo e três ordenações
+- [x] Cópia e download do resultado em `.txt`
+- [x] Processamento local, sem upload ou persistência dos caminhos
+
 ### Granulay (`/granulay/`)
 - [x] Landing page com scroll horizontal em seções
 - [x] Navegação por dots + botões prev/next
@@ -75,6 +82,7 @@ Site pessoal de Gabriel Paiva que funciona como:
 | Item | Prioridade |
 |---|---|
 | Mais artigos no blog | Alta |
+| Mais mini apps utilitários | Alta |
 | Página "Sobre" dedicada | Média |
 | Seção de projetos com mais detalhes | Média |
 | Suporte a múltiplos idiomas no site (não só Granulay) | Baixa |

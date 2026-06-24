@@ -29,6 +29,8 @@ Site **multi-página estático** servido como arquivos HTML planos no Vercel. Se
 | URL | Arquivo | Descrição |
 |---|---|---|
 | `/` | `index.html` | Homepage com abas de projetos e links |
+| `/miniapps/` | `miniapps/index.html` | Hub de ferramentas rápidas |
+| `/miniapps/arvore-de-arquivos/` | `miniapps/arvore-de-arquivos/index.html` | Formata caminhos como árvore de arquivos |
 | `/artigos/` | `artigos/index.html` | Arquivo de artigos |
 | `/artigos/:slug/` | `artigos/:slug/index.html` | Página de artigo individual |
 | `/granulay/` | `granulay/index.html` | Landing page do Granulay |
@@ -43,6 +45,10 @@ Site **multi-página estático** servido como arquivos HTML planos no Vercel. Se
 ├── index.html              # Homepage
 ├── styles.css              # Estilos globais
 ├── api/likes.js            # API de curtidas (Vercel Blob)
+├── miniapps/               # Hub e ferramentas estáticas
+│   ├── index.html
+│   ├── miniapps.css
+│   └── arvore-de-arquivos/
 ├── artigos/                # Blog
 │   ├── index.html
 │   └── :slug/index.html
@@ -76,6 +82,7 @@ Definidas em `styles.css` (raiz do projeto):
 - **Projetos na homepage:** `<a class="project">` com imagem + nome + descrição. Cor de glow via modifier class (`--gira`, `--granulay`, `--minpoker`, `--tiberius`).
 - **Tabs:** `role="tablist"` com vanilla JS, `data-tab`/`data-panel`, suporte a teclado (ArrowLeft/Right, Home/End).
 - **Artigos:** Classes `.essay-header`, `.essay-body`, `.essay-image`, `.essay-cover`.
+- **Mini Apps:** Shell editorial compartilhado em `miniapps/miniapps.css`; cada ferramenta mantém HTML, CSS, JS e testes próprios na pasta do seu slug.
 - **Like button:** FAB no canto inferior direito, `data-like-button`, `data-like-count`, `data-like-status`. Conectado à API via `article-likes.js`.
 - **Granulay:** Scroll horizontal com scroll-snap, dots de navegação, botões prev/next, SVG noise filter.
 
