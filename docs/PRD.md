@@ -43,6 +43,8 @@ Site pessoal de Gabriel Paiva que funciona como:
 - [x] Árvore de Arquivos com prévia ao vivo e três ordenações
 - [x] Cópia e download do resultado em `.txt`
 - [x] Processamento local, sem upload ou persistência dos caminhos
+- [x] CNPJ com geração e validação de CNPJs numéricos e alfanuméricos
+- [x] CNPJ com opção de máscara e processamento local
 
 ### Granulay (`/granulay/`)
 - [x] Landing page com scroll horizontal em seções
