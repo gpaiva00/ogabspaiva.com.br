@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>CNPJ — Mini Apps</title>
+        <meta
+            name="description"
+            content="Gere e valide CNPJs numéricos e alfanuméricos diretamente no navegador."
+        />
+        <meta name="theme-color" content="#f7f3eb" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)" />
+        <link rel="icon" href="../../assets/profile/gabriel-paiva.jpg" />
+        <link rel="stylesheet" href="../miniapps.css" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <main class="miniapps-shell tool-shell">
+            <nav class="site-nav" aria-label="Navegação principal">
+                <a class="brand-link" href="../../index.html">Gabriel Paiva</a>
+                <a href="../index.html">← Todos os mini apps</a>
+            </nav>
+
+            <header class="tool-header">
+                <p class="eyebrow">Mini App 02</p>
+                <h1 class="page-title">CNPJ</h1>
+                <p class="page-lede">
+                    Gere e valide CNPJs numéricos e alfanuméricos, com ou sem
+                    máscara.
+                </p>
+            </header>
+
+            <section class="workbench" aria-label="Gerador e validador de CNPJ">
+                <div class="cnpj-field">
+                    <label for="cnpj-input">CNPJ</label>
+                    <input
+                        id="cnpj-input"
+                        type="text"
+                        placeholder="12.ABC.345/01DE-35"
+                        autocomplete="off"
+                        autocapitalize="off"
+                        spellcheck="false"
+                    />
+                    <span id="status-badge" class="status-badge is-empty" role="status" aria-live="polite">
+                        Cole ou gere um CNPJ
+                    </span>
+                </div>
+
+                <div class="settings-row">
+                    <div class="field">
+                        <label id="type-label">Tipo</label>
+                        <div
+                            class="segmented-control"
+                            role="radiogroup"
+                            aria-labelledby="type-label"
+                        >
+                            <button
+                                class="segmented-button"
+                                type="button"
+                                role="radio"
+                                aria-checked="false"
+                                data-type="numeric"
+                            >
+                                Numérico
+                            </button>
+                            <button
+                                class="segmented-button"
+                                type="button"
+                                role="radio"
+                                aria-checked="true"
+                                data-type="alphanumeric"
+                            >
+                                Alfanumérico
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label id="mask-label">Formato</label>
+                        <div
+                            class="segmented-control"
+                            role="radiogroup"
+                            aria-labelledby="mask-label"
+                        >
+                            <button
+                                class="segmented-button"
+                                type="button"
+                                role="radio"
+                                aria-checked="true"
+                                data-mask="true"
+                            >
+                                Com máscara
+                            </button>
+                            <button
+                                class="segmented-button"
+                                type="button"
+                                role="radio"
+                                aria-checked="false"
+                                data-mask="false"
+                            >
+                                Sem máscara
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="actions-row">
+                    <button class="button button-secondary" id="copy-button" type="button">
+                        <svg id="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <rect width="14" height="14" x="8" y="8" rx="2" />
+                            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                        </svg>
+                        Copiar
+                    </button>
+                    <button class="button button-quiet" id="clear-button" type="button">
+                        Limpar
+                    </button>
+                    <button class="button button-primary" id="generate-button" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                            <path d="M3 3v5h5" />
+                            <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
+                            <path d="M16 21h5v-5" />
+                        </svg>
+                        Gerar
+                    </button>
+                </div>
+
+            </section>
+
+            <section class="quick-guide" aria-labelledby="guide-title">
+                <p class="eyebrow">Como funciona</p>
+                <h2 id="guide-title">Um campo, duas funções.</h2>
+                <p>
+                    Clique em <strong>Gerar</strong> para criar um CNPJ válido.
+                    Cole ou digite um CNPJ para validá-lo em tempo real. O tipo
+                    <strong>Alfanumérico</strong> segue as novas regras da
+                    Receita Federal; o tipo <strong>Numérico</strong> continua
+                    válido para CNPJs já existentes.
+                </p>
+                <p>
+                    O cálculo dos dígitos verificadores segue a especificação
+                    oficial da Receita Federal. Para mais detalhes, consulte o
+                    <a
+                        href="https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/acoes-e-programas/programas-e-atividades/cnpj-alfanumerico"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >site oficial sobre o CNPJ Alfanumérico</a
+                    >
+                    e o
+                    <a
+                        href="https://servicos.receitafederal.gov.br/servico/cnpj-alfa"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >simulador da Receita</a
+                    >.
+                </p>
+                <div class="disclaimer">
+                    <p>
+                        Esta ferramenta é destinada exclusivamente a testes e
+                        desenvolvimento. Ela não substitui a consulta oficial na
+                        Receita Federal e não garante que um CNPJ gerado esteja
+                        vinculado a uma pessoa jurídica real.
+                    </p>
+                </div>
+            </section>
+
+            <footer class="site-footer">
+                <a href="../index.html">Mini Apps</a>
+                <a href="../../index.html">ogabspaiva.com.br</a>
+            </footer>
+        </main>
+        <script src="cnpj.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>

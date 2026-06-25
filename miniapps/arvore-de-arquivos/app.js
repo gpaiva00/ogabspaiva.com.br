@@ -25,11 +25,17 @@ const clearButton = document.querySelector("#clear-button");
 
 let statusTimer;
 let copyIconTimer;
+let renderTimer;
 const copyIconMarkup = copyIcon.innerHTML;
 
-const render = () => {
+const doRender = () => {
     const tree = buildTree(pathsInput.value.split(/\r?\n/), rootName.value);
     treeOutput.textContent = renderTree(tree, sortMode.value);
+};
+
+const render = () => {
+    window.clearTimeout(renderTimer);
+    renderTimer = window.setTimeout(doRender, 150);
 };
 
 const showStatus = (message) => {
@@ -89,7 +95,7 @@ const downloadOutput = () => {
     element.addEventListener("input", render);
 });
 
-sortMode.addEventListener("change", render);
+sortMode.addEventListener("change", doRender);
 copyButton.addEventListener("click", copyOutput);
 downloadButton.addEventListener("click", downloadOutput);
 
@@ -97,16 +103,16 @@ exampleButton.addEventListener("click", () => {
     rootName.value = "meu-projeto";
     sortMode.value = "folders-first";
     pathsInput.value = sample;
-    render();
+    doRender();
     pathsInput.focus();
     showStatus("Exemplo restaurado.");
 });
 
 clearButton.addEventListener("click", () => {
     pathsInput.value = "";
-    render();
+    doRender();
     pathsInput.focus();
     showStatus("Entrada limpa.");
 });
 
-render();
+doRender();

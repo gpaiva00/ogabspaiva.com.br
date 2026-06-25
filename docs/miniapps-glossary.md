@@ -15,3 +15,13 @@
 - **Tree (`árvore`):** The normalized text output rendered with `├──`, `└──`, and `│` connectors.
 - **Sort mode (`ordenação`):** The rule used for siblings: folders first, simple alphabetical order, or original input order.
 - **Live preview (`prévia ao vivo`):** Recalculation of the tree whenever the root name, paths, or sort mode changes. There is no generate action.
+
+## CNPJ terms
+
+- **CNPJ (`Cadastro Nacional da Pessoa Jurídica`):** The Brazilian national registry of legal entities.
+- **Numeric CNPJ (`CNPJ numérico`):** The historical format with 14 numeric characters.
+- **Alphanumeric CNPJ (`CNPJ alfanumérico`):** The new format, starting in July 2026, where the first 12 characters may be letters or digits and the last 2 are check digits.
+- **Base (`base`):** The first 12 characters of the CNPJ, used to calculate the check digits.
+- **Check digits (`dígitos verificadores`):** The last 2 numeric characters, calculated with modulo 11 over the base.
+- **Mask (`máscara`):** The formatted display `AA.AAA.AAA/AAAA-DV` (or `XX.XXX.XXX/XXXX-XX` for numeric CNPJs).
+- **Normalize (`normalizar`):** Remove mask characters, trim spaces, and convert letters to uppercase before validation.

@@ -10,7 +10,6 @@
 
     const normalizePath = (path) =>
         path
-            .trim()
             .replace(/\\/g, "/")
             .replace(/^(\.\/)+/, "")
             .replace(/\/+/g, "/")
@@ -23,11 +22,11 @@
         });
 
     const sortChildren = (children, sortMode) => {
-        if (sortMode === "input") {
+        if (sortMode === SORT.INPUT) {
             return children.sort((left, right) => left.order - right.order);
         }
 
-        if (sortMode === "alphabetical") {
+        if (sortMode === SORT.ALPHABETICAL) {
             return children.sort(compareNames);
         }
 
@@ -39,6 +38,12 @@
             return compareNames(left, right);
         });
     };
+
+    const SORT = Object.freeze({
+        FOLDERS_FIRST: "folders-first",
+        ALPHABETICAL: "alphabetical",
+        INPUT: "input",
+    });
 
     const buildTree = (paths, rootName) => {
         const normalizedRoot = rootName.trim().replace(/[\\/]+$/, "") || "projeto";
@@ -59,15 +64,13 @@
             parts.forEach((part, index) => {
                 const isLast = index === parts.length - 1;
                 const isFolder = !isLast || explicitFolder;
+                let child = current.children.get(part);
 
-                if (!current.children.has(part)) {
+                if (!child) {
                     order += 1;
-                    current.children.set(part, createNode(part, isFolder, order));
-                }
-
-                const child = current.children.get(part);
-
-                if (isFolder) {
+                    child = createNode(part, isFolder, order);
+                    current.children.set(part, child);
+                } else if (isFolder && !child.isFolder) {
                     child.isFolder = true;
                 }
 
@@ -78,7 +81,7 @@
         return root;
     };
 
-    const renderTree = (root, sortMode = "folders-first") => {
+    const renderTree = (root, sortMode = SORT.FOLDERS_FIRST) => {
         const lines = [`${root.name}/`];
 
         const walk = (node, prefix = "") => {
@@ -104,6 +107,8 @@
         walk(root);
         return lines.join("\n");
     };
+
+
 
     const createDownloadName = (rootName) => {
         const safeRoot = rootName
