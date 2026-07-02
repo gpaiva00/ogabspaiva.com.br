@@ -197,11 +197,13 @@ export default async function handler(req, res) {
         height: 630,
         fonts: FONTS,
     });
+    const body = Buffer.from(await image.arrayBuffer());
 
-    const headers = {
-        "content-type": "image/png",
-        "cache-control":
-            "public, max-age=86400, s-maxage=31536000, immutable",
-    };
-    return new Response(image.body, { headers });
+    res.statusCode = 200;
+    res.setHeader("content-type", "image/png");
+    res.setHeader(
+        "cache-control",
+        "public, max-age=86400, s-maxage=31536000, immutable",
+    );
+    res.end(body);
 }
