@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+        {
+            "source": "/api/og/:app([a-z0-9-]+)\\.png",
+            "destination": "/api/og?app=:app"
+        }
+    ]
+}
