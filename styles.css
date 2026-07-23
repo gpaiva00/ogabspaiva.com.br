@@ -163,7 +163,8 @@ h1 {
 .content-tab {
     position: relative;
     appearance: none;
-    padding: 0 0 12px;
+    min-height: 48px;
+    padding: 14px 0 16px;
     border: 0;
     color: var(--muted);
     background: transparent;
@@ -449,7 +450,16 @@ h1 {
     font-size: 0.94rem;
 }
 
+.footer nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 22px;
+}
+
 .footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
     text-decoration: underline;
     text-decoration-color: transparent;
     text-underline-offset: 4px;
