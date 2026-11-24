@@ -237,12 +237,22 @@
                 gap: 18px;
                 margin-bottom: 18px;
                 border-bottom: 1px solid var(--line);
+                overflow-x: auto;
+                overflow-y: hidden;
+                scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .content-tabs::-webkit-scrollbar {
+                display: none;
             }
 
             .content-tab {
                 position: relative;
+                flex: 0 0 auto;
                 appearance: none;
                 min-height: 48px;
+                white-space: nowrap;
                 padding: 14px 0 16px;
                 border: 0;
                 color: var(--muted);
